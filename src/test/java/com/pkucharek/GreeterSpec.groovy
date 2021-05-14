@@ -2,9 +2,11 @@ package com.pkucharek
 
 import spock.lang.Specification
 
+import java.time.LocalTime
+
 class GreeterSpec extends Specification {
 
-    Greeter greeter = new Greeter()
+    Greeter greeter = new Greeter(() -> LocalTime.parse("05:00:00"))
 
     def "returns Hello #name"() {
         expect:
@@ -38,7 +40,7 @@ class GreeterSpec extends Specification {
 
     def "returns Good morning when time is between 06:00 and 12:00"() {
         expect:
-            greeter.greet("John") == result
+            new Greeter(() -> LocalTime.parse(time)).greet("John") == result
 
         where:
             time       | result
