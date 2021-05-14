@@ -6,7 +6,7 @@ import java.time.LocalTime
 
 class TimeBasedGreeterSpec extends Specification {
 
-    def "returns Good morning when time is in (06:00, 12:00]"() {
+    def "returns Good morning when #time is in (06:00, 12:00]"() {
         expect:
             timeBasedGreeter(time).greet("John") == result
 
@@ -17,7 +17,7 @@ class TimeBasedGreeterSpec extends Specification {
             "12:00:00" | "Good morning John"
     }
 
-    def "returns Hello when time is in (12:00, 18:00]"() {
+    def "returns Hello when #time is in (12:00, 18:00]"() {
         expect:
             timeBasedGreeter(time).greet("John") == result
 
@@ -28,7 +28,7 @@ class TimeBasedGreeterSpec extends Specification {
             "18:00:00" | "Hello John"
     }
 
-    def "returns Good evening when time is in (18:00, 22:00]"() {
+    def "returns Good evening when #time is in (18:00, 22:00]"() {
         expect:
             timeBasedGreeter(time).greet("John") == result
 
@@ -39,7 +39,7 @@ class TimeBasedGreeterSpec extends Specification {
             "22:00:00" | "Good evening John"
     }
 
-    def "returns Good night when time is in (22:00, 06:00]"() {
+    def "returns Good night when #time is in (22:00, 06:00]"() {
         expect:
             timeBasedGreeter(time).greet("John") == result
 
