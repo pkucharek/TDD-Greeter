@@ -15,4 +15,14 @@ class GreeterSpec extends Specification {
             "Jack" | "Hello Jack"
             "Bob"  | "Hello Bob"
     }
+
+    def "input name is trimmed"() {
+        expect:
+            greeter.greet(name) == result
+
+        where:
+            name         | result
+            "  James  "  | "Hello James"
+            "\nEvelyn\t" | "Hello Evelyn"
+    }
 }
