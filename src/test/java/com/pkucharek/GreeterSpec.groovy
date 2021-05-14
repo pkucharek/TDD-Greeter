@@ -25,4 +25,14 @@ class GreeterSpec extends Specification {
             "  James  "  | "Hello James"
             "\nEvelyn\t" | "Hello Evelyn"
     }
+
+    def "input name #name is capitalized"() {
+        expect:
+            greeter.greet(name) == result
+
+        where:
+            name     | result
+            "harper" | "Hello Harper"
+            "mason"  | "Hello Mason"
+    }
 }
