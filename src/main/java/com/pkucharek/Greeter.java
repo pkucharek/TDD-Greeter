@@ -4,6 +4,7 @@ import org.apache.commons.lang3.StringUtils;
 
 public class Greeter {
     private final BeginningProvider beginningProvider;
+    private int counter = 0;
 
     public Greeter(BeginningProvider beginningProvider) {
         this.beginningProvider = beginningProvider;
@@ -13,7 +14,15 @@ public class Greeter {
         String beginning = beginningProvider.provide();
         String correctedName = getCorrectedName(name);
 
-        return String.format("%s %s", beginning, correctedName);
+        String result = String.format("%s %s", beginning, correctedName);
+        print(result);
+
+        return result;
+    }
+
+    private void print(String result) {
+        counter++;
+        System.out.printf("%d. %s%n", counter, result);
     }
 
     private String getCorrectedName(String name) {

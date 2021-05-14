@@ -38,4 +38,23 @@ class StandardGreeterSpec extends Specification {
             "mason"  | "Hello Mason"
     }
 
+    def "logs into console each time greeted"() {
+        given:
+            def buffer = new ByteArrayOutputStream()
+            System.out = new PrintStream(buffer)
+
+        when:
+            standardGreeter.greet("John")
+
+        then:
+            buffer.toString() == "1. Hello John\r\n"
+
+        when:
+            standardGreeter.greet("John")
+
+        then:
+            buffer.toString() ==
+                    "1. Hello John\r\n" +
+                    "2. Hello John\r\n"
+    }
 }
