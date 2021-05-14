@@ -6,7 +6,7 @@ import java.time.LocalTime
 
 class StandardGreeterSpec extends Specification {
 
-    Greeter standardGreeter = new Greeter(() -> LocalTime.parse("05:00:00"))
+    Greeter standardGreeter = new Greeter(() -> LocalTime.parse("13:00:00"))
 
     def "returns Hello #name"() {
         expect:

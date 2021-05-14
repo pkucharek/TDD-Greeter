@@ -47,6 +47,8 @@ class TimeBasedGreeterSpec extends Specification {
             time       | result
             "22:00:01" | "Good night John"
             "03:00:00" | "Good night John"
+            "23:59:59" | "Good night John"
+            "00:00:00" | "Good night John"
             "06:00:00" | "Good night John"
     }
 
