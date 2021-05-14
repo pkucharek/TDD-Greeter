@@ -35,4 +35,17 @@ class GreeterSpec extends Specification {
             "harper" | "Hello Harper"
             "mason"  | "Hello Mason"
     }
+
+    def "returns Good morning when time is between 06:00 and 12:00"() {
+        expect:
+            greeter.greet("John") == result
+
+        where:
+            time       | result
+            "05:59:59" | "Hello John"
+            "06:00:00" | "Good morning John"
+            "08:00:00" | "Good morning John"
+            "12:00:00" | "Good morning John"
+            "12:00:01" | "Hello John"
+    }
 }
