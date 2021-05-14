@@ -2,13 +2,15 @@ package com.pkucharek
 
 import spock.lang.Specification
 
-class GreeterSpec extends Specification {
+import java.time.LocalTime
 
-    Greeter greeter = new Greeter()
+class StandardGreeterSpec extends Specification {
+
+    Greeter standardGreeter = new Greeter(() -> LocalTime.parse("05:00:00"))
 
     def "returns Hello #name"() {
         expect:
-            greeter.greet(name) == result
+            standardGreeter.greet(name) == result
 
         where:
             name   | result
@@ -18,7 +20,7 @@ class GreeterSpec extends Specification {
 
     def "input name is trimmed"() {
         expect:
-            greeter.greet(name) == result
+            standardGreeter.greet(name) == result
 
         where:
             name         | result
@@ -28,11 +30,12 @@ class GreeterSpec extends Specification {
 
     def "input name #name is capitalized"() {
         expect:
-            greeter.greet(name) == result
+            standardGreeter.greet(name) == result
 
         where:
             name     | result
             "harper" | "Hello Harper"
             "mason"  | "Hello Mason"
     }
+
 }
