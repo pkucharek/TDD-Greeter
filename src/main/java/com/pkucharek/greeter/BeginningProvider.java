@@ -1,4 +1,4 @@
-package com.pkucharek;
+package com.pkucharek.greeter;
 
 interface BeginningProvider {
     String provide();

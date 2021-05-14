@@ -1,4 +1,4 @@
-package com.pkucharek;
+package com.pkucharek.greeter;
 
 import java.time.LocalTime;
 import java.util.List;

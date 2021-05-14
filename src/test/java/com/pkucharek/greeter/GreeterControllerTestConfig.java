@@ -1,4 +1,4 @@
-package com.pkucharek;
+package com.pkucharek.greeter;
 
 import org.springframework.context.annotation.Bean;
 
