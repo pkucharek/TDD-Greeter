@@ -1,10 +1,10 @@
-package com.pkucharek
+package com.pkucharek.greeter
 
 import spock.lang.Specification
 
 class ConsoleOutputGreeterSpec extends Specification {
 
-    Greeter standardGreeter = new Greeter(() -> "Hello")
+    Greeter standardGreeter = new Greeter(() -> "Hello" )
     def buffer = new ByteArrayOutputStream()
 
     def "logs into console each time greeted"() {

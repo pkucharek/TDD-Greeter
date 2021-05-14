@@ -1,4 +1,4 @@
-package com.pkucharek;
+package com.pkucharek.greeter;
 
 import org.apache.commons.lang3.StringUtils;
 

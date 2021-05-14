@@ -1,10 +1,10 @@
-package com.pkucharek
+package com.pkucharek.greeter
 
 import spock.lang.Specification
 
 class StandardGreeterSpec extends Specification {
 
-    Greeter standardGreeter = new Greeter(() -> "Hello")
+    Greeter standardGreeter = new Greeter(() -> "Hello" )
 
     def "returns Hello #name"() {
         expect:
