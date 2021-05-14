@@ -26,6 +26,8 @@ public class Greeter {
     private String getGreetingBeginning() {
         if (isMorning())
             return "Good morning";
+        if (isEvening())
+            return "Good evening";
         return "Hello";
     }
 
@@ -33,6 +35,12 @@ public class Greeter {
         LocalTime actualTime = timeProvider.provide();
         return actualTime.isAfter(LocalTime.parse("05:59:59"))
                 && actualTime.isBefore(LocalTime.parse("12:00:01"));
+    }
+
+    private boolean isEvening() {
+        LocalTime actualTime = timeProvider.provide();
+        return actualTime.isAfter(LocalTime.parse("17:59:59"))
+                && actualTime.isBefore(LocalTime.parse("22:00:01"));
     }
 
     private String getCorrectedName(String name) {
