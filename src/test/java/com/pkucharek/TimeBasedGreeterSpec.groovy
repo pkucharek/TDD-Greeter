@@ -53,7 +53,9 @@ class TimeBasedGreeterSpec extends Specification {
     }
 
     def timeBasedGreeter(String time) {
-        new Greeter(() -> LocalTime.parse(time))
+        def timeProvider = () -> LocalTime.parse(time)
+        def beginningProviderImpl = new BeginningProviderImpl(timeProvider)
+        new Greeter(beginningProviderImpl)
     }
 
 }
