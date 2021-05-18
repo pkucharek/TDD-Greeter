@@ -5,7 +5,7 @@ import java.util.List;
 
 class BeginningProviderImpl implements BeginningProvider {
     private final TimeProvider timeProvider;
-    private final List<TimeRangePredicateSupplier> timeRanges = List.of(
+    private final List<TimeBasedGreetingSupplier> timeRanges = List.of(
         new MorningPredicateSupplier(),
         new EveningPredicateSupplier(),
         new NightPredicateSupplier()
@@ -22,7 +22,7 @@ class BeginningProviderImpl implements BeginningProvider {
     @Override
     public String provide() {
         LocalTime time = timeProvider.provide();
-        for (TimeRangePredicateSupplier predicateSupplier : timeRanges)
+        for (TimeBasedGreetingSupplier predicateSupplier : timeRanges)
             if (predicateSupplier.test(time))
                 return predicateSupplier.get();
 

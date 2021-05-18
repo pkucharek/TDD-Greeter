@@ -2,10 +2,11 @@ package com.pkucharek.greeter;
 
 import java.time.LocalTime;
 
-class AfternoonPredicateSupplier implements TimeRangePredicateSupplier {
+class AfternoonPredicateSupplier implements TimeBasedGreetingSupplier {
     @Override
     public boolean test(LocalTime time) {
-        throw new AfternoonCheckException("Afternoon is default case, shouldn't be checked");
+        return time.isAfter(LocalTime.parse("12:00:00"))
+                && time.isBefore(LocalTime.parse("18:00:01"));
     }
 
     @Override
