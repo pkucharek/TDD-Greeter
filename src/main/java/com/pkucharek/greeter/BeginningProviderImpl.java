@@ -5,27 +5,20 @@ import java.util.List;
 
 class BeginningProviderImpl implements BeginningProvider {
     private final TimeProvider timeProvider;
-    private final List<TimeRangePredicateSupplier> timeRanges = List.of(
-        new MorningPredicateSupplier(),
-        new EveningPredicateSupplier(),
-        new NightPredicateSupplier()
-    );
+    private final List<TimeBasedGreetingSupplier> timeRanges;
 
-    BeginningProviderImpl() {
-        timeProvider = LocalTime::now;
-    }
-
-    BeginningProviderImpl(TimeProvider timeProvider) {
+    BeginningProviderImpl(TimeProvider timeProvider, List<TimeBasedGreetingSupplier> timeRanges) {
         this.timeProvider = timeProvider;
+        this.timeRanges = timeRanges;
     }
 
     @Override
     public String provide() {
         LocalTime time = timeProvider.provide();
-        for (TimeRangePredicateSupplier predicateSupplier : timeRanges)
-            if (predicateSupplier.test(time))
-                return predicateSupplier.get();
-
-        return new AfternoonPredicateSupplier().get();
+        return timeRanges.stream()
+                .filter(p -> p.test(time))
+                .findFirst()
+                .map(TimeBasedGreetingSupplier::get)
+                .orElseThrow(() -> new RuntimeException("Invalid time"));
     }
 }
