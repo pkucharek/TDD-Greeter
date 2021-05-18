@@ -8,7 +8,8 @@ class BeginningProviderImpl implements BeginningProvider {
     private final List<TimeBasedGreetingSupplier> timeRanges = List.of(
         new MorningPredicateSupplier(),
         new EveningPredicateSupplier(),
-        new NightPredicateSupplier()
+        new NightPredicateSupplier(),
+        new AfternoonPredicateSupplier()
     );
 
     BeginningProviderImpl() {
@@ -22,10 +23,10 @@ class BeginningProviderImpl implements BeginningProvider {
     @Override
     public String provide() {
         LocalTime time = timeProvider.provide();
-        for (TimeBasedGreetingSupplier predicateSupplier : timeRanges)
-            if (predicateSupplier.test(time))
-                return predicateSupplier.get();
-
-        return new AfternoonPredicateSupplier().get();
+        return timeRanges.stream()
+                .filter(p -> p.test(time))
+                .findFirst()
+                .map(TimeBasedGreetingSupplier::get)
+                .orElseThrow(() -> new RuntimeException("Invalid time"));
     }
 }
