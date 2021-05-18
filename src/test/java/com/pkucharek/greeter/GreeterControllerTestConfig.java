@@ -6,7 +6,7 @@ class GreeterControllerTestConfig extends GreeterConfiguration {
 
     @Bean
     GreeterController greeterController() {
-        return new GreeterController(greeter());
+        return new GreeterController(greeter(() -> "Hello"));
     }
 
 }
