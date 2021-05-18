@@ -5,19 +5,11 @@ import java.util.List;
 
 class BeginningProviderImpl implements BeginningProvider {
     private final TimeProvider timeProvider;
-    private final List<TimeBasedGreetingSupplier> timeRanges = List.of(
-        new MorningPredicateSupplier(),
-        new EveningPredicateSupplier(),
-        new NightPredicateSupplier(),
-        new AfternoonPredicateSupplier()
-    );
+    private final List<TimeBasedGreetingSupplier> timeRanges;
 
-    BeginningProviderImpl() {
-        timeProvider = LocalTime::now;
-    }
-
-    BeginningProviderImpl(TimeProvider timeProvider) {
+    BeginningProviderImpl(TimeProvider timeProvider, List<TimeBasedGreetingSupplier> timeRanges) {
         this.timeProvider = timeProvider;
+        this.timeRanges = timeRanges;
     }
 
     @Override
