@@ -2,7 +2,7 @@ package com.pkucharek.greeter;
 
 import java.time.LocalTime;
 
-class AfternoonPredicateSupplier implements TimeBasedGreetingSupplier {
+class AfternoonGreetingSupplier implements TimeBasedGreetingSupplier {
     @Override
     public boolean test(LocalTime time) {
         return time.isAfter(LocalTime.parse("12:00:00"))

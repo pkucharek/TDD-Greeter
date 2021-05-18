@@ -17,10 +17,10 @@ class GreeterConfiguration {
     BeginningProvider beginningProvider(TimeProvider timeProvider) {
         return new BeginningProviderImpl(
             timeProvider, List.of(
-                new MorningPredicateSupplier(),
-                new AfternoonPredicateSupplier(),
-                new EveningPredicateSupplier(),
-                new NightPredicateSupplier()
+                new MorningGreetingSupplier(),
+                new AfternoonGreetingSupplier(),
+                new EveningGreetingSupplier(),
+                new NightGreetingSupplier()
             )
         );
     }

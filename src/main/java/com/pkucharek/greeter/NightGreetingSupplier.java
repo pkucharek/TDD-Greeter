@@ -2,7 +2,7 @@ package com.pkucharek.greeter;
 
 import java.time.LocalTime;
 
-class NightPredicateSupplier implements TimeBasedGreetingSupplier {
+class NightGreetingSupplier implements TimeBasedGreetingSupplier {
     @Override
     public boolean test(LocalTime time) {
         boolean isAfterEvening = time.isAfter(LocalTime.parse("22:00:00"));
