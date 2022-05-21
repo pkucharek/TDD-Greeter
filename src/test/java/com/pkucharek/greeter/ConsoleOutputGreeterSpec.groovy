@@ -6,6 +6,7 @@ class ConsoleOutputGreeterSpec extends Specification {
 
     Greeter standardGreeter = new Greeter(() -> "Hello" )
     def buffer = new ByteArrayOutputStream()
+    private String NEW_LINE  = System.getProperty("line.separator")
 
     def "logs into console each time greeted"() {
         given:
@@ -19,14 +20,14 @@ class ConsoleOutputGreeterSpec extends Specification {
         when:
             standardGreeter.greet("John")
         then:
-            printedMessageIs("1. Hello John\r\n")
+            printedMessageIs("1. Hello John$NEW_LINE")
 
         when:
             standardGreeter.greet("John")
         then:
             printedMessageIs(
-                "1. Hello John\r\n" +
-                "2. Hello John\r\n"
+                "1. Hello John$NEW_LINE" +
+                "2. Hello John$NEW_LINE"
             )
     }
 
