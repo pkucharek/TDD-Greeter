@@ -10,7 +10,7 @@ class GreeterConfiguration {
 
     @Bean
     Greeter greeter(TimeProvider timeProvider) {
-        BeginningProvider beginningProvider = new BeginningProviderImpl(
+        BeginningProvider beginningProvider = new BeginningProvider(
             timeProvider,
             List.of(
                 new MorningGreetingSupplier(),
