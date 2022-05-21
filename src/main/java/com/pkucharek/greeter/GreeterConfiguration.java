@@ -9,20 +9,17 @@ import java.util.List;
 class GreeterConfiguration {
 
     @Bean
-    Greeter greeter(BeginningProvider beginningProvider) {
-        return new Greeter(beginningProvider);
-    }
-
-    @Bean
-    BeginningProvider beginningProvider(TimeProvider timeProvider) {
-        return new BeginningProviderImpl(
-            timeProvider, List.of(
+    Greeter greeter(TimeProvider timeProvider) {
+        BeginningProvider beginningProvider = new BeginningProviderImpl(
+            timeProvider,
+            List.of(
                 new MorningGreetingSupplier(),
                 new AfternoonGreetingSupplier(),
                 new EveningGreetingSupplier(),
                 new NightGreetingSupplier()
             )
         );
+        return new Greeter(beginningProvider);
     }
 
     @Bean

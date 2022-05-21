@@ -2,9 +2,13 @@ package com.pkucharek.greeter
 
 import spock.lang.Specification
 
+import java.time.LocalTime
+
 class ConsoleOutputGreeterSpec extends Specification {
 
-    Greeter standardGreeter = new Greeter(() -> "Hello" )
+    Greeter standardGreeter = new GreeterConfiguration().greeter {
+        LocalTime.parse("16:00:00")
+    }
     def buffer = new ByteArrayOutputStream()
     private String NEW_LINE  = System.getProperty("line.separator")
 

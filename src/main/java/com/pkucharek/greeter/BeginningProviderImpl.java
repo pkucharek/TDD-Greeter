@@ -7,7 +7,10 @@ class BeginningProviderImpl implements BeginningProvider {
     private final TimeProvider timeProvider;
     private final List<TimeBasedGreetingSupplier> timeRanges;
 
-    BeginningProviderImpl(TimeProvider timeProvider, List<TimeBasedGreetingSupplier> timeRanges) {
+    BeginningProviderImpl(
+        TimeProvider timeProvider,
+        List<TimeBasedGreetingSupplier> timeRanges
+    ) {
         this.timeProvider = timeProvider;
         this.timeRanges = timeRanges;
     }
