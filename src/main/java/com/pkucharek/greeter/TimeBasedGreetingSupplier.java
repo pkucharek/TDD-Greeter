@@ -36,6 +36,7 @@ class AfternoonGreetingSupplier implements TimeBasedGreetingSupplier {
         return "Hello";
     }
 }
+
 class EveningGreetingSupplier implements TimeBasedGreetingSupplier {
     private final LocalTime TIME_18_00_00 = LocalTime.parse("18:00:00");
     private final LocalTime TIME_22_00_01 = LocalTime.parse("22:00:01");
